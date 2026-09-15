@@ -1,9 +1,11 @@
-# Production stack for riseo.online (seo-api / seo-tool).
-# Usage on the VPS:
+# Production stack for the VPS (nginx frontend + API, no Vite).
+# On the server:
+#   cd ~/NH-SEO
+#   docker compose -f docker-compose.prod.yml down
 #   docker compose -f docker-compose.prod.yml up -d --build
 #
-# Set backend/.env and frontend/.env.production (or env_file paths below)
-# with BASE_URL=https://seo-api.riseo.online and VITE_API_URL accordingly.
+# Frontend: http://SERVER_IP:3003
+# API docs:  http://SERVER_IP:8003/docs
 
 services:
   backend:
@@ -18,9 +20,10 @@ services:
     environment:
       BASE_URL: https://seo-api.riseo.online
     volumes:
-      # Persist generated reports only — do not mount source in prod
       - ./backend/reports:/app/reports
     restart: unless-stopped
+    command:
+      ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8003"]
 
   frontend:
     build:

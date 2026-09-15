@@ -224,6 +224,16 @@ app = FastAPI(title="SEO & Speed Analysis API (Enterprise)")
 app.include_router(snapshots_router)
 app.include_router(chatbot_router)
 
+
+@app.get("/")
+def root():
+    return {
+        "service": "hiverank-api",
+        "docs": "/docs",
+        "ok": True,
+    }
+
+
 # CORS
 app.add_middleware(
     CORSMiddleware,
