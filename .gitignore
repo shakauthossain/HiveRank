@@ -52,8 +52,9 @@ backend/reports/
 backend/*.db
 backend/*.sqlite3
 backend/app.db
-*.html
+# Generated report artifacts (not the Vite entry HTML)
 *.pdf
+!frontend/index.html
 !debug_page.html
 !seo_report.html
 !pagespeed_report.html
