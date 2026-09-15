@@ -1,0 +1,37 @@
+# Production stack for riseo.online (seo-api / seo-tool).
+# Usage on the VPS:
+#   docker compose -f docker-compose.prod.yml up -d --build
+#
+# Set backend/.env and frontend/.env.production (or env_file paths below)
+# with BASE_URL=https://seo-api.riseo.online and VITE_API_URL accordingly.
+
+services:
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: seo_backend
+    ports:
+      - "8003:8003"
+    env_file:
+      - ./backend/.env
+    environment:
+      BASE_URL: https://seo-api.riseo.online
+    volumes:
+      # Persist generated reports only — do not mount source in prod
+      - ./backend/reports:/app/reports
+    restart: unless-stopped
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile.prod
+      args:
+        VITE_API_URL: https://seo-api.riseo.online
+        VITE_APP_TITLE: HiveRank
+    container_name: seo_frontend
+    ports:
+      - "3003:3003"
+    depends_on:
+      - backend
+    restart: unless-stopped

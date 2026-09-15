@@ -1,0 +1,4 @@
+.git/
+.github/
+backend/reports/
+**/node_modules/

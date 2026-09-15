@@ -1,0 +1,17 @@
+fastapi
+uvicorn
+playwright
+requests
+python-dotenv
+pydantic
+aiofiles
+jinja2
+sqlalchemy
+psycopg2-binary
+passlib
+bcrypt==3.2.0
+python-jose[jwt]
+pandas
+openpyxl
+python-multipart
+httpx

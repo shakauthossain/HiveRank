@@ -1,0 +1,58 @@
+@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400&family=Outfit:wght@500;600&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap");
+@import "tailwindcss";
+@import "./hiverank.css";
+
+/* Bridge Tailwind utilities ↔ HiveRank tokens (for legacy page chrome) */
+@theme {
+  --font-sans: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Outfit", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, monospace;
+
+  --color-bg-main: #f4f6f9;
+  --color-bg-card: #ffffff;
+  --color-bg-hover: #e8f0fe;
+  --color-border-subtle: #e2e8f0;
+  --color-border-focus: #1158e5;
+  --color-text-main: #0b1220;
+  --color-text-muted: #64748b;
+  --color-accent: #1158e5;
+  --color-accent-fg: #ffffff;
+  --color-hive: #1158e5;
+  --color-hive-dark: #0b3fa8;
+  --color-hive-soft: #e8f0fe;
+  --color-ink: #0b1220;
+  --color-ink-soft: #1e293b;
+  --color-paper: #f4f6f9;
+  --color-pass: #059669;
+  --color-warn: #d97706;
+  --color-fail: #dc2626;
+}
+
+html,
+body,
+#root {
+  margin: 0;
+  width: 100%;
+  max-width: 100%;
+  min-height: 100%;
+  min-height: 100dvh;
+  overflow-x: clip;
+}
+
+body {
+  background-color: var(--color-paper, #f4f6f9);
+  color: var(--color-ink, #0b1220);
+  font-family: var(--font-body, "Plus Jakarta Sans", system-ui, sans-serif);
+  font-size: 15px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+.font-display {
+  font-family: var(--font-display, "Outfit", system-ui, sans-serif);
+  letter-spacing: -0.02em;
+}
+
+.tabular {
+  font-variant-numeric: tabular-nums;
+}

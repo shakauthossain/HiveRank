@@ -1,0 +1,10 @@
+{
+  "name": "nh-seo-deck-builder",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Notionhive-branded SEO Snapshot PPTX builder",
+  "main": "build-deck.js",
+  "dependencies": {
+    "pptxgenjs": "^3.12.0"
+  }
+}
