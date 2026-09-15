@@ -16,9 +16,11 @@ export default defineConfig(({mode}) => {
       },
     },
     server: {
+      host: "0.0.0.0",
       port: 3003,
-      allowedHosts: ["seo-tool.riseo.online"],
-      hmr: process.env.DISABLE_HMR !== 'true',
+      strictPort: true,
+      allowedHosts: true,
+      hmr: process.env.DISABLE_HMR !== "true",
     },
   };
 });

@@ -12,13 +12,15 @@ from sqlalchemy.orm import sessionmaker
 
 load_dotenv()
 
-# NeonDB Connection URL
-SQLALCHEMY_DATABASE_URL = os.getenv(
-    "DATABASE_URL",
-    "postgresql://neondb_owner:npg_vk0AX1NsTPba@ep-quiet-snow-a1nvw1ht-pooler.ap-southeast-1.aws.neon.tech/neondb?sslmode=require",
-)
+# Neon / Postgres — must come from env. Never commit real credentials.
+SQLALCHEMY_DATABASE_URL = (os.getenv("DATABASE_URL") or "").strip()
+if not SQLALCHEMY_DATABASE_URL:
+    raise RuntimeError(
+        "DATABASE_URL is not set. Add it to backend/.env "
+        "(Neon connection string) and restart the API."
+    )
 
-_url = SQLALCHEMY_DATABASE_URL or ""
+_url = SQLALCHEMY_DATABASE_URL
 _parsed = urlparse(_url)
 _db_host = _parsed.hostname or ""
 _db_port = _parsed.port or 5432
